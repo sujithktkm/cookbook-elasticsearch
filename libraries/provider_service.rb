@@ -63,11 +63,11 @@ class ElasticsearchCookbook::ServiceProvider < Chef::Provider::LWRPBase
           # we need to include something about #{progname} fixed in here.
           program_name: new_resource.service_name,
           default_dir: default_conf_dir,
-          path_home: es_conf.path_home,
-          path_conf: es_conf.path_conf,
-          path_data: es_conf.path_data,
-          path_logs: es_conf.path_logs,
-          path_pid: es_conf.path_pid,
+          path_home: es_conf.path_home[es_install.type],
+          path_conf: es_conf.path_conf[es_install.type],
+          path_data: es_conf.path_data[es_install.type],
+          path_logs: es_conf.path_logs[es_install.type],
+          path_pid: es_conf.path_pid[es_install.type],
           user_name: es_user.username,
           group_name: es_user.groupname,
           nofile_limit: es_conf.nofile_limit
